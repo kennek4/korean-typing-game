@@ -11,6 +11,7 @@
 #include <cstring>
 #include <iostream>
 #include <ostream>
+
 const char *windowTitle = "I Can't Believe It!";
 const int windowWidth = 960;
 const int windowHeight = 540;
