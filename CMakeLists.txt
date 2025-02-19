@@ -25,13 +25,18 @@ else()
   find_package(SDL3_image REQUIRED) # Find the SDL3_image package
 endif()
 
-# Source files
-set(SCRIPT_SOURCES scripts/main.cpp)
+# Directories
+set(SCRIPT_DIR "scripts/")
+set(HEADER_DIR "scripts/headers/")
+set(CLASSES_DIR "scripts/classes/")
 
-set(HEADER_SOURCES scripts/headers/config.h)
+# Source files
+set(SCRIPT_SOURCES ${SCRIPT_DIR}main.cpp)
+set(HEADER_SOURCES ${HEADER_DIR}key_controller.hpp)
+set(CLASS_SOURCES ${CLASSES_DIR}key_controller.cpp)
 
 # Create your game executable target as usual
-add_executable(KTG ${HEADER_SOURCES} ${SCRIPT_SOURCES})
+add_executable(KTG ${HEADER_SOURCES} ${CLASS_SOURCES} ${SCRIPT_SOURCES})
 
 target_include_directories(KTG PRIVATE scripts)
 
