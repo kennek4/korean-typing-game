@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 project(KTG VERSION 0.1.0)
 cmake_policy(SET CMP0072 NEW)
 
+# Set the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Create an option to switch between a system sdl library and a vendored SDL
 # library
 option(KTG_VENDORED "Use vendored libraries" OFF)
@@ -16,10 +20,13 @@ else()
   find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3-shared)
 endif()
 
-set(SCRIPTS scripts/main.cpp)
+# Source files
+set(SCRIPT_SOURCES scripts/main.cpp)
+
+set(HEADER_SOURCES scripts/headers/config.h)
 
 # Create your game executable target as usual
-add_executable(KTG ${SCRIPTS})
+add_executable(KTG ${HEADER_SOURCES} ${SCRIPT_SOURCES})
 
 target_include_directories(KTG PRIVATE scripts)
 
