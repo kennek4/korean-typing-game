@@ -7,6 +7,7 @@
 #include <SDL3/SDL_render.h>
 #include <SDL3/SDL_surface.h>
 #include <SDL3/SDL_video.h>
+#include <SDL3_image/SDL_image.h>
 #include <cstddef>
 #include <cstring>
 #include <iostream>
@@ -45,18 +46,7 @@ int main(int argc, char *argv[]) {
   char *basePath = SDL_GetCurrentDirectory();
   char *snoopyBmpPath = strcat(basePath, "/assets/snoopy.bmp");
 
-  SDL_Surface *snoopyBmp = SDL_LoadBMP(snoopyBmpPath);
-  if (snoopyBmp == nullptr) {
-    std::cerr << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
-    SDL_DestroySurface(snoopyBmp);
-    SDL_Quit();
-    return 1;
-  }
-
-  // Create texture
-  SDL_Texture *snoopyTexture =
-      SDL_CreateTextureFromSurface(renderer, snoopyBmp);
-  SDL_DestroySurface(snoopyBmp);
+  SDL_Texture *snoopyTexture = IMG_LoadTexture(renderer, snoopyBmpPath);
 
   SDL_Event e;
   bool wantToQuit = false;
