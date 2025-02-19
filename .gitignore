@@ -18,4 +18,5 @@ CMakeUserPresets.json
 *.app
 
 # Local
+.cache/
 out/
