@@ -6,6 +6,10 @@ cmake_policy(SET CMP0072 NEW)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Set the output directory for builds
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+
 # Create an option to switch between a system sdl library and a vendored SDL
 # library
 option(KTG_VENDORED "Use vendored libraries" OFF)
